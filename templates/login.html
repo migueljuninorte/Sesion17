@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/miEstilo.css') }}">
+<script src="{{ url_for('static', filename='js/validacion.js') }}"></script>
+<style> img { height: 1em;} </style>
+</head>
+<body>
+<section class="content">
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+</section>
+<h1>{{user_created}}</h1>
+<br>
+<h1>Iniciar Sesión</h1>
+<form name="loginForm" method="post" action="{{ url_for('login') }}">
+    <label for="usuario">Usuario</label>
+    <input name="usuario" id="usuario" >
+    <label for="password">Contraseña</label>
+    <input type="password" name="password" id="password" >
+    <img src="{{ url_for('static', filename='images/show_pwd.png') }}" onmouseover="mostrarPassword();" onmouseout="ocultarPassword();" />
+    <input type="submit" value="Iniciar Sesion">
+  </form>
+<a href="{{ url_for('contactUs') }}">Contactenos</a>
+</body>
+</html>
