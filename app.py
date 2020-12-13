@@ -43,13 +43,13 @@ def register():
                 return render_template( 'register.html' )
 
             #Preguntar si el correo no ha sido registrado anteriormente
-            if db.execute( 'SELECT id FROM usuario WHERE correo = ?', (email,) ).fetchone() is not None:
+            if db.execute( 'SELECT id FROM usuarios WHERE correo = ?', (email,) ).fetchone() is not None:
                 error = 'El correo ya existe'.format( email )
                 flash( error )
                 return render_template( 'register.html' )
 
             db.execute(
-                'INSERT INTO usuario (usuario, correo, contraseña) VALUES (?,?,?)',
+                'INSERT INTO usuarios (usuario, correo, contraseña) VALUES (?,?,?)',
                 (username, email, password)
             )
             db.commit()
