@@ -84,7 +84,7 @@ def login():
                 return render_template( 'login.html' )
 
             user = db.execute(
-                'SELECT * FROM usuario WHERE usuario = ? AND contraseña = ?', (username, password)
+                'SELECT * FROM usuarios WHERE usuario = ? AND contraseña = ?', (username, password)
             ).fetchone()
 
             if user is None:
